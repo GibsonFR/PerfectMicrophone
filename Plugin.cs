@@ -1,13 +1,11 @@
 ﻿global using BepInEx;
 global using BepInEx.IL2CPP;
 global using HarmonyLib;
-global using UnityEngine;
-global using UnhollowerRuntimeLib;
 using Dissonance.Config;
 
-namespace BetterMovement
+namespace PerfectMicrophone
 {
-    [BepInPlugin("26A0C2CA-5DD9-42D6-845A-9FFB0526D9F0", "PerfectMicrophone", "1.0.0")]
+    [BepInPlugin("26A0C2CA-5DD9-42D6-845A-9FFB0526D9F0", "PerfectMicrophone", "1.1.0")]
     public class Plugin : BasePlugin
     {
         public override void Load()
@@ -19,14 +17,14 @@ namespace BetterMovement
         //Set ClientId
         [HarmonyPatch(typeof(SteamManager), nameof(SteamManager.Awake))]
         [HarmonyPostfix]
-        public static void OnSteamManagerAwake(SteamManager __instance)
+        public static void OnSteamManagerAwake()
         {
             VoiceSettings voiceSettingsInstance = VoiceSettings.Instance;
-
-            voiceSettingsInstance._quality = EnumPublicSealedvaStPoToLoMeHi7vUnique.High;
-            voiceSettingsInstance.Quality = EnumPublicSealedvaStPoToLoMeHi7vUnique.High;
             voiceSettingsInstance.BackgroundSoundRemovalAmount = 0;
             voiceSettingsInstance.VoiceDuckLevel = 0;
+            voiceSettingsInstance._vadSensitivity = 100;
+            voiceSettingsInstance._quality = EnumPublicSealedvaStPoToLoMeHi7vUnique.High;
+            voiceSettingsInstance.Quality = EnumPublicSealedvaStPoToLoMeHi7vUnique.High;
             voiceSettingsInstance.FrameSize = EnumPublicSealedvaTiSmMeLa5vUnique.Large;
             voiceSettingsInstance._frameSize = EnumPublicSealedvaTiSmMeLa5vUnique.Large;
             voiceSettingsInstance.AecmRoutingMode = EnumPublicSealedvaDiQuEaLoSp7vLoUnique.Disabled;
